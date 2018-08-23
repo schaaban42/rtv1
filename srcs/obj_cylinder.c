@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 19:16:13 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/11 21:33:52 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/20 22:18:51 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void			s_get_dt(double vars[4], t_obj *obj, t_ray *ray)
 	t_v3	n_dir;
 
 	n_pos = v3_sub(ray->pos, obj->pos);
-	n_dir = v3_rot(ray->dir, -obj->rot.x, -obj->rot.y, -obj->rot.z);
-	n_pos = v3_rot(n_pos, -obj->rot.x, -obj->rot.y, -obj->rot.z);
+	n_dir = v3_rot(ray->dir, obj->rot.x, obj->rot.y, obj->rot.z);
+	n_pos = v3_rot(n_pos, obj->rot.x, obj->rot.y, obj->rot.z);
 	vars[0] = (n_dir.x * n_dir.x) + (n_dir.z * n_dir.z);
 	vars[1] = (2 * (n_dir.x * (n_pos.x)))
 		+ (2 * (n_dir.z * (n_pos.z)));

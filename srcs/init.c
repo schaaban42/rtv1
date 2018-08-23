@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 16:41:47 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/19 04:17:09 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/21 04:52:06 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void				rtv1_init(t_rt *rt)
 	rt->h = 600;
 	rt->exit = 0;
 	rt->objs_cnt = 7;
-	rt->light.pos = (t_v3){0, -100, 100};
+	rt->light.pos = (t_v3){0, -100, 50};
 	s_init_camera(rt);
 	if (!(rt->objs = (t_obj*)ft_memalloc(sizeof(t_obj) * (rt->objs_cnt))))
 		error_handler(RT_ERR_MALLOC, rt);
@@ -45,7 +45,7 @@ void				rtv1_init(t_rt *rt)
 	rt->objs[0].obj_r = 35;
 	rt->objs[0].color = 0xffff0000;
 	rt->objs[1].type = 's';
-	rt->objs[1].pos = (t_v3){0, 0, 200};
+	rt->objs[1].pos = (t_v3){0, -50, 200};
 	rt->objs[1].rot = (t_v3){0, 0, 0};
 	rt->objs[1].obj_r = 35;
 	rt->objs[1].color = 0xff00ff00;
@@ -61,7 +61,7 @@ void				rtv1_init(t_rt *rt)
 	rt->objs[3].color = 0xffffff00;
 	rt->objs[4].type = 'p';
 	rt->objs[4].pos = (t_v3){0, 50, 0};
-	rt->objs[4].rot = (t_v3){0, 0, 0};
+	rt->objs[4].rot = (t_v3){180, 0, 0};
 	rt->objs[4].obj_norm = (t_v3){0, -1, 0};
 	rt->objs[4].color = 0xff00ffff;
 	rt->objs[5].type = 'p';

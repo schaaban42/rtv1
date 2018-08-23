@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/05 12:56:30 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/17 17:35:00 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/21 04:50:38 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_v3				v3_rot_z(t_v3 v, double a)
 t_v3				v3_rot(t_v3 v, double ax, double ay, double az)
 {
 	return (
-		v3_rot_x(v3_rot_y(v3_rot_z(v, az), ay), ax)
+		v3_rot_z(v3_rot_y(v3_rot_x(v, az), ay), ax)
 	);
 }
 

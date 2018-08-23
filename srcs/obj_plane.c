@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 15:10:55 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/19 04:40:01 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/20 22:46:20 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,25 @@ void				rt_plane(t_obj *obj, t_ray *ray)
 	}
 }
 
-t_v3				norm_plane(t_obj *obj, t_v3 ray_dir)
+t_v3				norm_plane(t_obj *obj, t_v3 ray_pos, t_v3 ray_hit, int debug)
 {
-	t_v3		cnorm;
-	double		a;
-	double		dir;
+	t_v3		n1;
+	t_v3		n2;
 
-	cnorm = v3_cpy(obj->obj_norm);
-	cnorm = v3_rot(cnorm, obj->rot.x, obj->rot.y, obj->rot.z);
-	a = to_deg(acos(v3_ang(cnorm, v3_normalized(ray_dir))));
-	dir = (a > 90.0 && a < 270.0) ? 1.0 : -1.0;
-	if (dir < 0)
+	n1 = v3_rot(v3_cpy(obj->obj_norm), obj->rot.x, obj->rot.y, obj->rot.z);
+	n2 = v3_rot(v3_mul(v3_cpy(obj->obj_norm), -1.0),
+		obj->rot.x, obj->rot.y, obj->rot.z);
+	if (debug == 1)
 	{
-		cnorm = v3_mul(cnorm, -1.0);
+		printf("debug:\n");
+		v3_print(obj->obj_norm, 0);
+		v3_print(obj->rot, 0);
+		v3_print(n1, 0);
+		v3_print(n2, 0);
+		v3_print(v3_sum(ray_hit, n1), 0);
+		v3_print(v3_sum(ray_hit, n2), 0);
+		v3_print(ray_pos, 0);
+		v3_print(ray_hit, 0);
 	}
-	return (v3_normalized(cnorm));
+	return ((v3_norm(v3_sub(v3_sum(ray_hit, n1), ray_pos)) < v3_norm(v3_sub(v3_sum(ray_hit, n2), ray_pos))) ? n1 : n2);
 }

@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 11:37:43 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/18 15:34:40 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/20 22:22:42 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void				rt_sphere(t_obj *obj, t_ray *ray);
 t_v3				norm_sphere(t_obj *obj, t_v3 p);
 void				rt_cylinder(t_obj *obj, t_ray *ray);
 void				rt_plane(t_obj *obj, t_ray *ray);
-t_v3				norm_plane(t_obj *obj, t_v3 ray_dir);
+t_v3				norm_plane(t_obj *obj, t_v3 ray_pos, t_v3 ray_hit, int debug);
 void				rt_cone(t_obj *obj, t_ray *ray);
 
 void				sdl_loop(t_rt *rt);

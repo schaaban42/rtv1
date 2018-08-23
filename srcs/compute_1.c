@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 02:42:56 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/19 01:13:16 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/08/21 04:43:50 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,14 +179,26 @@ static Uint32		s_ray_trace(t_rt *rt)
 					t_v3	n;
 					double	cosa;
 
-					n = norm_plane(rt->light.hit.obj, rt->light.dir);
-					if (!v3_cmp(n, norm_plane(rt->light.hit.obj, rt->ray.dir)))
+					n = norm_plane(rt->light.hit.obj, rt->light.pos, rt->light.hit.pos, 0);
+					if (rt->ray.screen_pos.x == 80 && rt->ray.screen_pos.y == 300)
+					{
+						t_v3 dwpeofk = norm_plane(rt->light.hit.obj, rt->ray.pos, rt->ray.hit.pos, 1);
+						printf("res:\n");
+						v3_print(dwpeofk, 0);
+					}
+					if (rt->ray.screen_pos.x == 400 && rt->ray.screen_pos.y == 500)
+					{
+						t_v3 dwpeofk = norm_plane(rt->light.hit.obj, rt->light.pos, rt->light.hit.pos, 1);
+						printf("res:\n");
+						v3_print(dwpeofk, 0);
+					}
+					if (!v3_cmp(n, norm_plane(rt->light.hit.obj, rt->ray.pos, rt->ray.hit.pos, 0)))
 						color = color_value(color, 0.1);
 					else
 					{
 						cosa = v3_ang(n, v3_sub(rt->light.pos, rt->light.hit.pos));
 						color = (Uint32)ft_colorgradient(cosa, 2, 0, rt->ray.hit.obj->color) | 0xff000000;
-						double brill = 0.98;
+						double brill = 0.95;
 						if (cosa > brill)
 							color = (Uint32)ft_colorgradient(((cosa - brill) * (1.0 / (1.0 - brill))), 2, color, 0xffffff) | 0xff000000;
 					}
