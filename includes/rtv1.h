@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 11:37:43 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/20 22:22:42 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/18 19:54:32 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <math.h>
 
 # define RT_PI				(double)3.1415926535897932
+
+# define RT_LIGHT_SHADOW	(double)0.05
 
 # define RT_ERR_MALLOC		1
 # define RT_ERR_SDL_INIT	2
@@ -146,9 +148,11 @@ void				rtv1_compute(t_rt *rt);
 void				rt_sphere(t_obj *obj, t_ray *ray);
 t_v3				norm_sphere(t_obj *obj, t_v3 p);
 void				rt_cylinder(t_obj *obj, t_ray *ray);
+t_v3				norm_cylinder(t_obj *obj, t_v3 p);
 void				rt_plane(t_obj *obj, t_ray *ray);
 t_v3				norm_plane(t_obj *obj, t_v3 ray_pos, t_v3 ray_hit, int debug);
 void				rt_cone(t_obj *obj, t_ray *ray);
+t_v3				norm_cone(t_obj *obj, t_v3 p);
 
 void				sdl_loop(t_rt *rt);
 

@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 01:14:38 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/20 22:19:36 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/18 19:54:10 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,17 @@ void				rt_cone(t_obj *obj, t_ray *ray)
 			ray->hit.obj = obj;
 		}
 	}
+}
+
+t_v3				norm_cone(t_obj *obj, t_v3 p)
+{
+	t_v3	v1;
+	t_v3	v2;
+	t_v3	n;
+
+	v1 = (t_v3){obj->pos.x, 0, obj->pos.z};
+	v2 = (t_v3){p.x, 0, p.z};
+	n = v3_sub(v2, v1);
+	n.y = v3_normalized(v3_rot_z((t_v3){1, 0, 0}, obj->obj_ang)).y;
+	return (v3_normalized(n));
 }

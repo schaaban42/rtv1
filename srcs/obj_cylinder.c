@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 19:16:13 by schaaban          #+#    #+#             */
-/*   Updated: 2018/08/20 22:18:51 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/18 19:11:45 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,14 @@ void				rt_cylinder(t_obj *obj, t_ray *ray)
 			ray->hit.obj = obj;
 		}
 	}
+}
+
+t_v3				norm_cylinder(t_obj *obj, t_v3 p)
+{
+	t_v3	v1;
+	t_v3	v2;
+
+	v1 = (t_v3){obj->pos.x, 0, obj->pos.z};
+	v2 = (t_v3){p.x, 0, p.z};
+	return (v3_normalized(v3_sub(v2, v1)));
 }
