@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 19:16:13 by schaaban          #+#    #+#             */
-/*   Updated: 2018/09/18 19:11:45 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/25 23:45:12 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void			s_get_dt(double vars[4], t_obj *obj, t_ray *ray)
 	t_v3	n_dir;
 
 	n_pos = v3_sub(ray->pos, obj->pos);
-	n_dir = v3_rot(ray->dir, obj->rot.x, obj->rot.y, obj->rot.z);
-	n_pos = v3_rot(n_pos, obj->rot.x, obj->rot.y, obj->rot.z);
+	n_dir = v3_inv_rot(ray->dir, -obj->rot.x, -obj->rot.y, -obj->rot.z);
+	n_pos = v3_inv_rot(n_pos, -obj->rot.x, -obj->rot.y, -obj->rot.z);
 	vars[0] = (n_dir.x * n_dir.x) + (n_dir.z * n_dir.z);
 	vars[1] = (2 * (n_dir.x * (n_pos.x)))
 		+ (2 * (n_dir.z * (n_pos.z)));
@@ -83,10 +83,12 @@ void				rt_cylinder(t_obj *obj, t_ray *ray)
 
 t_v3				norm_cylinder(t_obj *obj, t_v3 p)
 {
-	t_v3	v1;
-	t_v3	v2;
+	t_v3	n;
 
-	v1 = (t_v3){obj->pos.x, 0, obj->pos.z};
-	v2 = (t_v3){p.x, 0, p.z};
-	return (v3_normalized(v3_sub(v2, v1)));
+	n = v3_sub(p, obj->pos);
+	n = v3_inv_rot(n, -obj->rot.x, -obj->rot.y, -obj->rot.z);
+	n.y = 0;
+	n = v3_rot(n, obj->rot.x, obj->rot.y, obj->rot.z);
+	n = v3_normalized(n);
+	return (n);
 }

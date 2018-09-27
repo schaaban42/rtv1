@@ -6,7 +6,7 @@
 #    By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/27 14:24:38 by schaaban          #+#    #+#              #
-#    Updated: 2018/08/12 01:16:49 by schaaban         ###   ########.fr        #
+#    Updated: 2018/09/26 21:08:30 by schaaban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS		=		$(addprefix $(SRCS_DIR)/, 	\
 					hit.c						\
 					obj_cylinder.c				\
 					obj_plane.c					\
-					obj_cone.c					)
+					obj_cone.c					\
+					parser_1.c					)
 OBJS		=		$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
 COLOR_RED	=	\033[1;31m

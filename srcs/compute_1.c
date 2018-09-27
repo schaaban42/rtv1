@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 02:42:56 by schaaban          #+#    #+#             */
-/*   Updated: 2018/09/18 20:04:23 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/26 16:24:23 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,13 +180,13 @@ static Uint32		s_ray_trace(t_rt *rt)
 					double	cosa;
 
 					n = norm_plane(rt->light.hit.obj, rt->light.pos, rt->light.hit.pos, 0);
-					/*if (rt->ray.screen_pos.x == 410 && rt->ray.screen_pos.y == 410)
+					if (rt->ray.screen_pos.x == 675 && rt->ray.screen_pos.y == 200)
 					{
 						t_v3 dwpeofk = norm_plane(rt->light.hit.obj, rt->ray.pos, rt->ray.hit.pos, 1);
 						printf("res:\n");
 						v3_print(dwpeofk, 0);
 					}
-					if (rt->ray.screen_pos.x == 500 && rt->ray.screen_pos.y == 350)
+					/*if (rt->ray.screen_pos.x == 500 && rt->ray.screen_pos.y == 350)
 					{
 						t_v3 dwpeofk = norm_plane(rt->light.hit.obj, rt->light.pos, rt->light.hit.pos, 1);
 						printf("res:\n");

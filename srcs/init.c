@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 16:41:47 by schaaban          #+#    #+#             */
-/*   Updated: 2018/09/18 19:57:10 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/26 21:36:04 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				rtv1_init(t_rt *rt)
 	rt->w = 700;
 	rt->h = 600;
 	rt->exit = 0;
-	rt->objs_cnt = 15;
+	rt->objs_cnt = 0;
 	rt->light.pos = (t_v3){0, 0, 50};
 	s_init_camera(rt);
 	if (!(rt->objs = (t_obj*)ft_memalloc(sizeof(t_obj) * (rt->objs_cnt))))
@@ -83,7 +83,7 @@ void				rtv1_init(t_rt *rt)
 	rt->objs[3].pos = (t_v3){0, 300, 0};
 	rt->objs[3].rot = (t_v3){0, 0, 0};
 	rt->objs[3].obj_norm = (t_v3){0, -1, 0};
-	rt->objs[3].color = 0xff00ffff;*/
+	rt->objs[3].color = 0xff00ffff;
 	rt->objs[0].type = 'p';
 	rt->objs[0].pos = (t_v3){0, 0, 250};
 	rt->objs[0].rot = (t_v3){90, 0, 0};
@@ -178,5 +178,5 @@ void				rtv1_init(t_rt *rt)
 	rt->objs[14].pos = (t_v3){0, 0, 172};
 	rt->objs[14].rot = (t_v3){0, 0, 0};
 	rt->objs[14].obj_ang = 30;
-	rt->objs[14].color = 0xffffff00;
+	rt->objs[14].color = 0xffffff00;*/
 }

@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 11:37:43 by schaaban          #+#    #+#             */
-/*   Updated: 2018/09/18 19:54:32 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/09/26 21:46:45 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define RT_ERR_MALLOC		1
 # define RT_ERR_SDL_INIT	2
+# define RT_ERR_ARG			3
 
 # if SDL_BYTEORDER == SDL_BIG_ENDIAN
 #  define RT_SDL_RMASK		0xff000000
@@ -131,6 +132,7 @@ t_v3				v3_rot_x(t_v3 v, double a);
 t_v3				v3_rot_y(t_v3 v, double a);
 t_v3				v3_rot_z(t_v3 v, double a);
 t_v3				v3_rot(t_v3 v, double ax, double ay, double az);
+t_v3				v3_inv_rot(t_v3 v, double ax, double ay, double az);
 double				v3_ang(t_v3 v1, t_v3 v2);
 
 t_hit				hit_empty();
@@ -140,6 +142,8 @@ int					hit_closer(t_ray ray, t_hit h1, t_hit h2);
 void				ray_reset_hit(t_ray *ray);
 
 void				rtv1_init(t_rt *rt);
+
+void				parse_args(t_rt *rt, int argc, char **argv);
 
 void				sdl_init(t_rt *rt);
 
